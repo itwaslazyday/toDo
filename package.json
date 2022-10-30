@@ -24,6 +24,10 @@
     "plugins": [
       "@typescript-eslint"
     ],
+    "rules": {
+      "no-console": 1,
+      "@typescript-eslint/no-unused-vars": 0
+    },
     "extends": [
       "react-app",
       "react-app/jest",

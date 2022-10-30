@@ -1,0 +1,21 @@
+:root {
+  --mobile-width: 320px;
+  --mobile-width-only: 767px;
+  --tablet-width: 768px;
+  --desktop-width: 1280px;
+
+  --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --color-backgrouund-grey: #F5F5F5;
+  --color-header-title-pink: rgba(175, 47, 47, 0.15);
+  --color-border-grey: #E8E8E8;
+  --color-white: #ffffff;
+
+  /* --color-text-main: #343434;
+  --color-tip-text-grey: #3E3E3E;
+  --color-button-background-yellow: #FED74B;
+  --color-checkmark-yellow: #FECF01;
+  --color-timemark-background-blue: #D9E8FF;
+  --color-timemark-background-hover: #6BA6FF; */
+
+}

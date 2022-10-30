@@ -1,0 +1,12 @@
+.todo__header{
+  text-align: center;
+}
+
+.todo__title {
+  padding: 0;
+  margin: 0;
+  font-size: 90px;
+  line-height: 100px;
+  font-weight: 100;
+  color: var(--color-header-title-pink);
+}

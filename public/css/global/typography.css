@@ -1,0 +1,16 @@
+html,
+body {
+  font-style: normal;
+  font-weight: 200;
+  font-size: 12px;
+  line-height: 14px;
+  min-width: var(--mobile-width);
+  font-family: var(--font-family);
+  color: var(--color-text-main);
+  background-color: var(--color-backgrouund-grey);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

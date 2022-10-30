@@ -1,0 +1,39 @@
+.control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: var(--color-white);
+  font-size: 8px;
+}
+
+.control__filter-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.control__remain {
+  display: block;
+}
+
+.control__filter-item {
+  padding: 3px 5px;
+}
+
+.control__completed-clear {
+  padding: 3px 0 5px 3px;
+}
+
+.basic-button {
+  display: block;
+  border: none;
+  background-color: transparent;
+  line-height: 10px;
+  cursor: pointer;
+}
+
+.basic-button--active {
+  border: 0.5px solid var(--color-header-title-pink);
+  border-radius: 2px;
+}

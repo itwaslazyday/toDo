@@ -1,0 +1,84 @@
+.todo__input-field {
+  width: 100%;
+  min-height: 35px;
+  padding: 5px 5px 5px 30px;
+  border: none;
+  box-shadow: inset 0 -1px 1px rgb(0 0 0 / 3%);
+  border-bottom: 0.5px solid var(--color-border-grey);
+}
+
+.todo__input-field:focus-visible {
+  outline: 1px solid var(--color-header-title-pink);
+  outline-offset: -1px;
+}
+
+.todo__input-field::placeholder {
+  font-style: italic;
+  opacity: 0.4;
+}
+
+.todo__task-list li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  line-height: 20px;
+  gap: 10px;
+  padding: 7px 10px 7px 30px;
+  border-bottom: 0.5px solid var(--color-border-grey);
+  background-color: var(--color-white);
+}
+
+.todo__task-remove-button {
+  margin-left: auto;
+  padding: 5px;
+  font-size: inherit;
+  opacity: 0.2;
+}
+
+.todo__task-remove-button:hover {
+  color: tomato;
+  opacity: 1;
+}
+
+.todo__task-checkmark {
+  position: absolute;
+  top: 7px;
+  left: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 0.5px solid var(--color-border-grey);
+}
+
+.todo__task-input[type="checkbox"]:checked + .todo__task-checkmark::before,
+.todo__task-input[type="checkbox"]:checked + .todo__task-checkmark::after {
+  position: absolute;
+  background-color: #7DB550;
+  content: "";
+  height: 1px;
+}
+
+.todo__task-input[type="checkbox"]:checked + .todo__task-checkmark {
+  border-color: #7DB550;
+}
+
+.todo__task-input[type="checkbox"]:checked + .todo__task-checkmark::before{
+  width: 6px;
+  top: 11.6px;
+  left: 4px;
+  transform: rotate(49deg);
+}
+
+.todo__task-checkmark::after {
+  width: 11px;
+  top: 13.8px;
+  left: 8px;
+  transform: rotate(-55deg);
+  transform-origin: left top;
+}
+
+.todo__label-text--complete {
+  opacity: 0.4;
+  text-decoration: line-through;
+}
