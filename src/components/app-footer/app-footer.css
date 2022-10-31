@@ -4,7 +4,7 @@
   align-items: center;
   padding: 5px 10px;
   background-color: var(--color-white);
-  font-size: 8px;
+  font-size: 9px;
 }
 
 .control__filter-list {
@@ -17,12 +17,18 @@
   display: block;
 }
 
-.control__filter-item {
+.control__filter-label {
   padding: 3px 5px;
+  cursor: pointer;
+}
+
+.control__filter-label:hover {
+  box-shadow: 0 0 2px var(--color-header-title-pink);
 }
 
 .control__completed-clear {
-  padding: 3px 0 5px 3px;
+  padding: 3px;
+  padding-right: 0;
 }
 
 .basic-button {
@@ -30,10 +36,14 @@
   border: none;
   background-color: transparent;
   line-height: 10px;
-  cursor: pointer;
+  border-radius: 2px;
 }
 
 .basic-button--active {
   border: 0.5px solid var(--color-header-title-pink);
-  border-radius: 2px;
+}
+
+.control__completed-clear:not([disabled]):hover {
+  color: tomato;
+  cursor: pointer;
 }

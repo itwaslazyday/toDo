@@ -9,15 +9,29 @@ type AppMainProps = {
 
 function AppMain ({taskList, setTaskList}: AppMainProps): JSX.Element {
   const handleFormSubmit = (evt: KeyboardEvent<HTMLInputElement>) => {
-    if ((evt.keyCode === 10 || evt.keyCode === 13) && (evt.ctrlKey || evt.metaKey) && evt.currentTarget.value !== '') {
-      setTaskList(
-        [...taskList,
-          {
-            value: evt.currentTarget.value,
-            isDone: false
-          }
-        ]
-      );
+    if ((evt.keyCode === 10 || evt.keyCode === 13) && evt.currentTarget.value !== '') {
+      const repeatedTask = taskList.find((task) => task.value === evt.currentTarget.value) as Task;
+      const convertRepeatField = () => {
+        repeatedTask.isRepeated = !repeatedTask.isRepeated;
+        setTaskList([...taskList]);
+      };
+
+      if (!repeatedTask) {
+        setTaskList(
+          [...taskList,
+            {
+              value: evt.currentTarget.value,
+              isDone: false,
+              isRepeated: false
+            }
+          ]
+        );
+      } else {
+        convertRepeatField();
+        setTimeout(() => {
+          convertRepeatField();
+        }, 500);
+      }
       evt.currentTarget.value = '';
     }
   };
@@ -32,7 +46,6 @@ function AppMain ({taskList, setTaskList}: AppMainProps): JSX.Element {
     setTaskList([...taskList]);
   };
 
-  console.log(taskList);
   return (
     <main className='todo__main'>
       <h2 className='visually-hidden'>ToDo App - персональный список дел на каждый день.</h2>
@@ -47,13 +60,14 @@ function AppMain ({taskList, setTaskList}: AppMainProps): JSX.Element {
       <ul className='todo__task-list list-reset'>
         {taskList.length > 0 ?
           taskList.map((task) => (
-            <li key={task.value} className='todo__task-item'>
+            <li key={task.value} className={`todo__task-item ${task.isRepeated ? 'shake' : ''}`}>
               <label className='todo__task-label'>
                 <input
                   className='todo__task-input visually-hidden'
                   type="checkbox"
                   name="task-item"
                   onChange={() => handleTaskComplete(task.value)}
+                  checked={task.isDone}
                 />
                 <span className="todo__task-checkmark"></span>
                 <span className={`todo__label-text ${task.isDone ? 'todo__label-text--complete' : ''}`}>
