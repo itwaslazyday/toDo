@@ -5,10 +5,22 @@ import './app-main.css';
 type AppMainProps = {
   taskList: Task[];
   setTaskList: (task: Task[]) => void;
+  filterType: string;
 }
 
-function AppMain ({taskList, setTaskList}: AppMainProps): JSX.Element {
-  const handleFormSubmit = (evt: KeyboardEvent<HTMLInputElement>) => {
+function AppMain ({taskList, setTaskList, filterType}: AppMainProps): JSX.Element {
+  const getFilteredTaskList = (filter: string, tasks: Task[]) => {
+    switch (filter) {
+      case ('Active'):
+        return (tasks.filter((task) => !task.isDone));
+      case ('Completed'):
+        return (tasks.filter((task) => task.isDone));
+      default:
+        return tasks;
+    }
+  };
+
+  const handleInputSubmit = (evt: KeyboardEvent<HTMLInputElement>) => {
     if ((evt.keyCode === 10 || evt.keyCode === 13) && evt.currentTarget.value !== '') {
       const repeatedTask = taskList.find((task) => task.value === evt.currentTarget.value) as Task;
       const convertRepeatField = () => {
@@ -54,12 +66,12 @@ function AppMain ({taskList, setTaskList}: AppMainProps): JSX.Element {
           type="text"
           className='todo__input-field'
           placeholder='Whats needs to be done?'
-          onKeyDown={(evt) => handleFormSubmit(evt)}
+          onKeyDown={(evt) => handleInputSubmit(evt)}
         />
       </form>
       <ul className='todo__task-list list-reset'>
         {taskList.length > 0 ?
-          taskList.map((task) => (
+          getFilteredTaskList(filterType, taskList).map((task) => (
             <li key={task.value} className={`todo__task-item ${task.isRepeated ? 'shake' : ''}`}>
               <label className='todo__task-label'>
                 <input
